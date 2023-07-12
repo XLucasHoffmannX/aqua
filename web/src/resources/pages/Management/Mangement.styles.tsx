@@ -1,4 +1,4 @@
-import { Input, Select } from "antd";
+import { Input } from "antd";
 import { Popup } from "react-leaflet";
 import styled from "styled-components";
 
@@ -24,7 +24,7 @@ export const InteractiveBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding: 0 1rem;
 `;
 
 export const InteractiveBoxSearch = styled.div`

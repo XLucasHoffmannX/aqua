@@ -21,7 +21,7 @@ export function Management(): JSX.Element {
             lat: pointStart[0],
             lng: pointStart[1],
           }}
-          zoom={100}
+          zoom={16}
           style={{ height: "100%", width: "100%" }}
           zoomControl={false}
         >

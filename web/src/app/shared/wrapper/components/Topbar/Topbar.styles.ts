@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 9999;
 `;
 
 export const Logout = styled.div`
@@ -24,9 +25,23 @@ export const Logout = styled.div`
     background-color: var(--white);
     color: var(--red-1);
   }
+
+  @media (max-width: 700px) {
+    border: 1px solid var(--red-1);
+    background-color: var(--white);
+    color: var(--red-1);
+  }
 `;
 
 export const Title = styled.div`
+  display: flex;
+  align-items: center;
   color: var(--font-1);
   font-size: 18px;
+
+  > svg {
+    margin-right: 1rem;
+    font-size: 28px;
+    cursor: pointer;
+  }
 `;

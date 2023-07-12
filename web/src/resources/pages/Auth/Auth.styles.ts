@@ -7,6 +7,7 @@ export const Container = styled(Layout)`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 
   height: 100%;
   width: 100%;
@@ -38,6 +39,7 @@ export const LogoArea = styled.div`
     font-size: 18px;
     color: var(--font-2);
     margin: 1rem 2rem;
+    text-align: center;
   }
 `;
 

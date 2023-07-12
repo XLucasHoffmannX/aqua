@@ -2,10 +2,16 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 320px;
+  width: 360px;
   height: 100%;
   background-color: var(--blue-1);
   overflow-x: none;
+
+  @media (max-width: 700px) {
+    width: 0;
+    opacity: 0;
+    transition: all 1s;
+  }
 `;
 
 export const SidebarTop = styled.div`

@@ -28,7 +28,7 @@ export function Auth(): JSX.Element {
         <AuthContainer>
           <LogoArea>
             <img src={Logo} alt="AquaTrack" />
-            <span>Monitoramento de águas: precisão e sustentabilidade </span>
+            <span>Monitoramento de águas: precisão e sustentabilidade</span>
           </LogoArea>
           <AuthForm onSubmit={(e)=> handleSubmit(e)} id="form_auth">
             <AuthInputEmail
