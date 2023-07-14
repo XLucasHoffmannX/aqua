@@ -5,7 +5,6 @@ export default function PrivateRoute({ children, ...rest }: any) {
   const getItem = localStorage.getItem("primaryLogin") === "true";
   const cookie = Cookies.get("access-token");
 
-  console.log(getItem, cookie);
 
   return (
     <Route

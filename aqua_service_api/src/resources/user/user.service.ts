@@ -151,6 +151,16 @@ export class UserService {
     return Object(check.email);
   }
 
+  async logout(req: Request, res: Response) {
+    try {
+      res.clearCookie('refresh', { path: '/access/user/refresh' });
+
+      res.json();
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
   findAll() {
     return this.userRepository.find();
   }

@@ -21,7 +21,6 @@ export function useAuth() {
 
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
-    console.log("teste");
     if (Cookies.get("access-token") && localStorage.getItem("primaryLogin")) {
       return (window.location.href = "/home");
     } else {
@@ -39,6 +38,11 @@ export function useAuth() {
           if (res.status === 201 || res.status === 200) {
             setSuccess(true);
             return message.success("Autenticado com sucesso");
+          }
+
+          if (res.status === 400) {
+            setSuccess(false);
+            return message.success(res.data.message);
           }
         })
         .catch((error) => {

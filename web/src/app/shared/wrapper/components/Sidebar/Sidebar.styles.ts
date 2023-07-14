@@ -1,16 +1,54 @@
 import { Link, NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { ContainerStyleType } from "./Sidebar.types";
 
-export const Container = styled.div`
-  width: 360px;
-  height: 100%;
-  background-color: var(--blue-1);
-  overflow-x: none;
+export const Container = styled.div<ContainerStyleType>`
+  transition: all 0.5s;
+  ${({ openSidebar }) =>
+    openSidebar
+      ? css`
+          width: 0;
+          opacity: 0;
+        `
+      : css`
+          width: 360px;
+          height: 100%;
+          background-color: var(--blue-1);
+          overflow-x: none;
+        `}
 
   @media (max-width: 700px) {
-    width: 0;
-    opacity: 0;
-    transition: all 1s;
+    ${({ openSidebar }) =>
+      openSidebar
+        ? css`
+            width: 0;
+            opacity: 0;
+          `
+        : css`
+            position: absolute;
+            width: 340px;
+            height: 100%;
+            background-color: var(--blue-1);
+            overflow-x: none;
+            z-index: 9999;
+          `}
+  }
+`;
+
+export const CloseMobile = styled.div`
+  display: none;
+  
+  @media (max-width: 700px) {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    > svg {
+      color: var(--white);
+      font-size: 24px;
+    }
   }
 `;
 

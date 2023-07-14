@@ -38,6 +38,11 @@ export class UserController {
     return await this.userService.checkEmail(checkEmail);
   }
 
+  @Get('/logout')
+  async logout(@Req() req, @Res() res) {
+    return await this.userService.logout(req, res);
+  }
+
   @Get()
   findAll() {
     return this.userService.findAll();

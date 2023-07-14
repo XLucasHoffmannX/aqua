@@ -61,7 +61,7 @@ export function Auth(): JSX.Element {
               onFocus={()=> onChangeStatus(false)}
             />
             <AuthSubmit>
-              <ButtonSubmit type="primary" form="form_auth" onClick={(e) => handleSubmit(e)}>Acessar</ButtonSubmit>
+              <ButtonSubmit htmlType="submit"  type="primary" form="form_auth" onClick={(e) => handleSubmit(e)}>Acessar</ButtonSubmit>
             </AuthSubmit>
           </AuthForm>
         </AuthContainer>

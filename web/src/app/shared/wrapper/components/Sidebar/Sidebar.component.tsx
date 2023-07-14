@@ -1,4 +1,5 @@
 import {
+  CloseMobile,
   Container,
   SidebarContent,
   SidebarItem,
@@ -9,13 +10,17 @@ import {
 } from "./Sidebar.styles";
 import { CgUserlane } from "react-icons/cg";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoIosNotificationsOutline, IoMdClose } from "react-icons/io";
 import LogoWhite from "../../../../../resources/assets/images/AquaTrackWhite.svg";
+import { ISidebarProps } from "./Sidebar.types";
 
-export function Sidebar(): JSX.Element {
+export function Sidebar({ openSidebar, onChangeOpenSidebar }: ISidebarProps): JSX.Element {
   return (
-    <Container>
+    <Container openSidebar={openSidebar}>
       <SidebarTop>
+        <CloseMobile>
+          <IoMdClose  onClick={()=> onChangeOpenSidebar(false)}/>
+        </CloseMobile>
         <SidebarLogo href="/home">
           <img src={LogoWhite} alt="" />
         </SidebarLogo>
