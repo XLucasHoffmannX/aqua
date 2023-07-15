@@ -29,6 +29,7 @@ export class UserService {
   }
 
   async registerUser(data: CreateUserDto) {
+    console.log(data);
     try {
       if (!(data.email || data.password)) {
         throw new HttpException(

@@ -8,16 +8,17 @@ import {
   ButtonSubmit,
   Container,
   LogoArea,
+  RegisterNow,
 } from "./Auth.styles";
 import {
   AiOutlineLock,
-  AiOutlineUser,
+  AiOutlineMail,
   AiOutlineInfoCircle,
 } from "react-icons/ai";
 import Logo from "../../assets/images/AquaTrack.svg";
 import { Tooltip } from "antd";
 import { useAuth } from "./useAuth";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export function Auth(): JSX.Element {
   const { authForm, changeInput, handleSubmit, status, success, onChangeStatus } = useAuth();
@@ -33,7 +34,7 @@ export function Auth(): JSX.Element {
           <AuthForm onSubmit={(e)=> handleSubmit(e)} id="form_auth">
             <AuthInputEmail
               placeholder="Email"
-              prefix={<AiOutlineUser className="input_user_ico" />}
+              prefix={<AiOutlineMail />}
               suffix={
                 <Tooltip
                   title="Exemplo: email@dominio.com"
@@ -43,7 +44,6 @@ export function Auth(): JSX.Element {
                   <AiOutlineInfoCircle style={{ color: "rgba(0,0,0,.45)" }} />
                 </Tooltip>
               }
-              className="input_user"
               name="email"
               value={authForm.email}
               status={status ? "error" : ""}
@@ -53,7 +53,6 @@ export function Auth(): JSX.Element {
             <AuthInputPassword
               placeholder="Senha de usuário"
               prefix={<AiOutlineLock className="input_user_ico" />}
-              className="input_user"
               name="password"
               value={authForm.password}
               status={status ? "error" : ""}
@@ -63,6 +62,9 @@ export function Auth(): JSX.Element {
             <AuthSubmit>
               <ButtonSubmit htmlType="submit"  type="primary" form="form_auth" onClick={(e) => handleSubmit(e)}>Acessar</ButtonSubmit>
             </AuthSubmit>
+            <RegisterNow>
+              <Link to="/register">Não possui um conta? Registre-se aqui</Link>
+            </RegisterNow>
           </AuthForm>
         </AuthContainer>
         <AuthFooter>Hoffmann | ©2023</AuthFooter>
