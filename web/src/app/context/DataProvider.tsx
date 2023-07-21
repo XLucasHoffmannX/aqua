@@ -1,20 +1,23 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { UserApi } from "../data/api/user/User.api";
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { UserApi } from '../data/api/user/User.api';
+import { IDataProviderProps, IStateDataProvider } from './Data.provider.types';
 
-export const ContextState = createContext({});
+export const ContextState = createContext<IStateDataProvider | {}>({});
 
-export default function DataProvider({ children }: { children: ReactNode }) {
-  const [token, setToken] = useState<string | null>(null);
+export default function DataProvider({
+  children
+}: IDataProviderProps): ReactNode {
+  const [token, setToken] = useState<string>('');
 
   useEffect(() => {
-    setToken(Cookies.get("access-token") ?? null);
+    setToken(Cookies.get('access-token') ?? '');
   }, [token, setToken]);
 
-  const state = {
-    token: token, 
+  const state: IStateDataProvider = {
+    token: token,
     onChangeToken: setToken,
-    userApi: UserApi(token),
+    userApi: UserApi({ token })
   };
 
   return (

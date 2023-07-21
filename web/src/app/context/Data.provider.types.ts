@@ -1,7 +1,12 @@
-import { IUser } from "../data/api/user/User.types";
+import { IUserApi } from 'app/data/api/user/User.types';
+import { ReactNode } from 'react';
 
-export interface IDataProvider {
-    token: string | null,
-    onChangeToken: (value: string | null) => void;
-    userApi: IUser;
+export interface IDataProviderProps {
+  children: ReactNode;
+}
+
+export interface IStateDataProvider {
+  token: string;
+  onChangeToken: (value: string) => void;
+  userApi: IUserApi;
 }
