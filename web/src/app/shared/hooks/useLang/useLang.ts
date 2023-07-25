@@ -4,6 +4,8 @@ import { LanguageKeyType } from './useLang.types';
 import { useEffect, useState } from 'react';
 
 export function useLang() {
+  const language = window.navigator.language;
+
   const lang = langJSON;
   const [currentLang, setCurrentLang] = useState(
     (Cookies.get('language') as LanguageKeyType) ?? 'pt'
@@ -12,8 +14,7 @@ export function useLang() {
   const changeLanguage = (key: LanguageKeyType) => {
     setCurrentLang(key);
 
-    Cookies.remove('language')
-    Cookies.set('language', currentLang);
+    Cookies.set('language', key);
   };
 
   return {

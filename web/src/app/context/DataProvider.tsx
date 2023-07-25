@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { UserApi } from '../data/api/user/User.api';
 import { IDataProviderProps, IStateDataProvider } from './Data.provider.types';
 import { LanguageKeyType } from '../shared/hooks/useLang/useLang.types';
+import { useLang } from '../shared/hooks/useLang/useLang';
 
 export const ContextState = createContext<IStateDataProvider | {}>({});
 
@@ -12,16 +13,7 @@ export default function DataProvider({
   const [token, setToken] = useState<string>('');
 
   useEffect(() => {
-    const currentLang = Cookies.get('language');
-    
-    const language = window.navigator.language;
-
     setToken(Cookies.get('access-token') ?? '');
-
-    if(language && !currentLang) {
-      Cookies.set('language', language.substring(0, 2) as LanguageKeyType)
-    }
-
   }, [token, setToken]);
 
   const state: IStateDataProvider = {
