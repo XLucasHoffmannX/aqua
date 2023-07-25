@@ -20,6 +20,7 @@ import { Tooltip } from 'antd';
 import { useAuth } from './useAuth';
 import { Link, Redirect } from 'react-router-dom';
 import { useLang } from '../../../app/shared/hooks/useLang/useLang';
+import { LanguageKeyType } from '../../../app/shared/hooks/useLang/useLang.types';
 
 export function Auth(): JSX.Element {
   const { lang, currentLang, onChangeLanguage } = useLang();
@@ -33,14 +34,16 @@ export function Auth(): JSX.Element {
     onChangeStatus
   } = useAuth();
 
-  function teste(){
-    currentLang === 'en' ? onChangeLanguage('pt') : onChangeLanguage('en');
+  function teste(language: LanguageKeyType) {
+    onChangeLanguage(language);
   }
 
   return (
     <>
       <Container>
-      <button onClick={teste}>{lang.global.next[currentLang]}</button>
+        <button onClick={() => teste('en')}>en</button>
+        <button onClick={() => teste('pt')}>pt</button>
+        <button onClick={() => teste('es')}>es</button>
 
         <AuthContainer>
           <LogoArea>
@@ -92,7 +95,9 @@ export function Auth(): JSX.Element {
               </ButtonSubmit>
             </AuthSubmit>
             <RegisterNow>
-              <Link to='/register'>{lang.auth.without_account[currentLang]}</Link>
+              <Link to='/register'>
+                {lang.auth.without_account[currentLang]}
+              </Link>
             </RegisterNow>
           </AuthForm>
         </AuthContainer>
