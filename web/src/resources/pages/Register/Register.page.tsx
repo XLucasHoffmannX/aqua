@@ -19,14 +19,17 @@ import {
   AiOutlineLock,
 } from "react-icons/ai";
 import { Tooltip } from "antd";
+import { useLang } from '../../../app/shared/hooks/useLang/useLang';
 
 export function Register(): JSX.Element {
+  const { lang, currentLang } = useLang();
+
   return (
     <Container>
       <RegisterContainer>
         <LogoArea>
           <img src={Logo} alt="AquaTrack" />
-          <span>Monitoramento de águas: precisão e sustentabilidade</span>
+          <span>{lang.auth.sub_title[currentLang]}</span>
         </LogoArea>
         <RegisterForm id="form_register">
           <RegisterInput

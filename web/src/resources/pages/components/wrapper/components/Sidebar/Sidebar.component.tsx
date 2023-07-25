@@ -11,7 +11,7 @@ import {
 import { CgUserlane } from "react-icons/cg";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import { IoIosNotificationsOutline, IoMdClose } from "react-icons/io";
-import LogoWhite from "../../../../../resources/assets/images/AquaTrackWhite.svg";
+import LogoWhite from "../../../../../assets/images/AquaTrackWhite.svg";
 import { ISidebarProps } from "./Sidebar.types";
 
 export function Sidebar({ openSidebar, onChangeOpenSidebar }: ISidebarProps): JSX.Element {

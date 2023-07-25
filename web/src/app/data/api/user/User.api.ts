@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HttpAuth } from '../../../shared/Http';
+import { HttpAuth } from '../config/Http';
 import { User } from '../../../shared/types/user.types';
 import { IUserApi, IUserProps } from './User.types';
 import UserService from '../../services/User/User.service';

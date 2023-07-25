@@ -1,10 +1,11 @@
 import { ChangeEvent, SyntheticEvent, useContext, useState } from 'react';
-import { changeInputRecursive } from '../../../app/shared/hooks/changeInputRecursive';
 import Cookies from 'js-cookie';
 import { ContextState } from '../../../app/context/DataProvider';
-import { Http } from '../../../app/shared/Http';
+import { Http } from '../../../app/data/api/config/Http';
 import { message } from 'antd';
 import { IStateDataProvider } from 'app/context/Data.provider.types';
+import { useChangeInputRecursive } from '../../../app/shared/hooks';
+
 
 export function useAuth() {
   const { onChangeToken } = useContext(ContextState) as IStateDataProvider;
@@ -17,7 +18,7 @@ export function useAuth() {
   });
 
   const changeInput = (e: ChangeEvent<HTMLInputElement>) =>
-    changeInputRecursive(e, authForm, setAuthForm);
+    useChangeInputRecursive(e, authForm, setAuthForm);
 
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();

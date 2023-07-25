@@ -8,68 +8,97 @@ import {
   ButtonSubmit,
   Container,
   LogoArea,
-  RegisterNow,
-} from "./Auth.styles";
+  RegisterNow
+} from './Auth.styles';
 import {
   AiOutlineLock,
   AiOutlineMail,
-  AiOutlineInfoCircle,
-} from "react-icons/ai";
-import Logo from "../../assets/images/AquaTrack.svg";
-import { Tooltip } from "antd";
-import { useAuth } from "./useAuth";
-import { Link, Redirect } from "react-router-dom";
+  AiOutlineInfoCircle
+} from 'react-icons/ai';
+import Logo from '../../assets/images/AquaTrack.svg';
+import { Tooltip } from 'antd';
+import { useAuth } from './useAuth';
+import { Link, Redirect } from 'react-router-dom';
+import { useLang } from '../../../app/shared/hooks/useLang/useLang';
 
 export function Auth(): JSX.Element {
-  const { authForm, changeInput, handleSubmit, status, success, onChangeStatus } = useAuth();
+  const { lang, currentLang, onChangeLanguage } = useLang();
+
+  const {
+    authForm,
+    changeInput,
+    handleSubmit,
+    status,
+    success,
+    onChangeStatus
+  } = useAuth();
+
+  function teste(){
+    currentLang === 'en' ? onChangeLanguage('pt') : onChangeLanguage('en');
+  }
 
   return (
     <>
       <Container>
+      <button onClick={teste}>{lang.global.next[currentLang]}</button>
+
         <AuthContainer>
           <LogoArea>
-            <img src={Logo} alt="AquaTrack" />
-            <span>Monitoramento de águas: precisão e sustentabilidade</span>
+            <img
+              src={Logo}
+              alt='AquaTrack'
+            />
+            <span>{lang.auth.sub_title[currentLang]}</span>
           </LogoArea>
-          <AuthForm onSubmit={(e)=> handleSubmit(e)} id="form_auth">
+          <AuthForm
+            onSubmit={e => handleSubmit(e)}
+            id='form_auth'
+          >
             <AuthInputEmail
-              placeholder="Email"
+              placeholder='Email'
               prefix={<AiOutlineMail />}
               suffix={
                 <Tooltip
-                  title="Exemplo: email@dominio.com"
+                  title={lang.auth.example_email[currentLang]}
                   arrow
                   autoAdjustOverflow
                 >
-                  <AiOutlineInfoCircle style={{ color: "rgba(0,0,0,.45)" }} />
+                  <AiOutlineInfoCircle style={{ color: 'rgba(0,0,0,.45)' }} />
                 </Tooltip>
               }
-              name="email"
+              name='email'
               value={authForm.email}
-              status={status ? "error" : ""}
+              status={status ? 'error' : ''}
               onChange={changeInput}
-              onFocus={()=> onChangeStatus(false)}
+              onFocus={() => onChangeStatus(false)}
             />
             <AuthInputPassword
-              placeholder="Senha de usuário"
-              prefix={<AiOutlineLock className="input_user_ico" />}
-              name="password"
+              placeholder='Senha de usuário'
+              prefix={<AiOutlineLock className='input_user_ico' />}
+              name='password'
               value={authForm.password}
-              status={status ? "error" : ""}
+              status={status ? 'error' : ''}
               onChange={changeInput}
-              onFocus={()=> onChangeStatus(false)}
+              onFocus={() => onChangeStatus(false)}
             />
             <AuthSubmit>
-              <ButtonSubmit htmlType="submit"  type="primary" form="form_auth" onClick={(e) => handleSubmit(e)}>Acessar</ButtonSubmit>
+              <ButtonSubmit
+                htmlType='submit'
+                type='primary'
+                form='form_auth'
+                onClick={e => handleSubmit(e)}
+              >
+                Acessar
+              </ButtonSubmit>
             </AuthSubmit>
             <RegisterNow>
-              <Link to="/register">Não possui um conta? Registre-se aqui</Link>
+              <Link to='/register'>{lang.auth.without_account[currentLang]}</Link>
             </RegisterNow>
           </AuthForm>
         </AuthContainer>
         <AuthFooter>Hoffmann | ©2023</AuthFooter>
       </Container>
-      {success && <Redirect to="/home" />}
+      {success && <Redirect to='/home' />}
     </>
   );
 }

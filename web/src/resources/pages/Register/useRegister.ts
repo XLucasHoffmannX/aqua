@@ -1,6 +1,6 @@
-import { ChangeEvent, useContext, useState } from "react";
-import { ContextState } from "../../../app/context/DataProvider";
-import { changeInputRecursive } from "../../../app/shared/hooks/changeInputRecursive";
+import { ChangeEvent, useContext, useState } from 'react';
+import { ContextState } from '../../../app/context/DataProvider';
+import { useChangeInputRecursive } from 'app/shared/hooks/useChangeInputRecursive/useChangeInputRecursive';
 
 export function useRegister() {
   const state: any = useContext(ContextState);
@@ -8,13 +8,13 @@ export function useRegister() {
   const [status, setStatus] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [registerForm, setRegisterForm] = useState<Record<string, string>>({
-    nome: "",
-    email: "",
-    password: "",
+    nome: '',
+    email: '',
+    password: ''
   });
 
   const changeInput = (e: ChangeEvent<HTMLInputElement>) =>
-    changeInputRecursive(e, registerForm, setRegisterForm);
+    useChangeInputRecursive(e, registerForm, setRegisterForm);
 
   return;
 }

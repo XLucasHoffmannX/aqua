@@ -1,4 +1,4 @@
-import { HttpAuth } from "../../../Http";
+import { HttpAuth } from "../../../../../../app/data/api/config/Http";
 import Cookies from "js-cookie";
 import { IUseTopbar } from "./Topabar.types";
 

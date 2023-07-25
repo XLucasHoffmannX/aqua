@@ -1,4 +1,4 @@
-import { HttpAuth } from '../../../shared/Http';
+import { HttpAuth } from '../../api/config/Http';
 import { User } from '../../../shared/types/user.types';
 import { IGetUser } from './User.types';
 
