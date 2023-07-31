@@ -1,4 +1,5 @@
-import { User } from "../../../shared/types/user.types";
+import { User } from "shared/types/user.types";
+
 
 export interface IUserProps {
   token: string;

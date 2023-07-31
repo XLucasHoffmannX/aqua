@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-import { HttpAuth } from '../config/Http';
-import { User } from '../../../shared/types/user.types';
+import { useEffect, useState } from 'react';
+
+
 import { IUserApi, IUserProps } from './User.types';
-import UserService from '../../services/User/User.service';
-import { useQuery } from '@tanstack/react-query';
+import { User } from 'shared/types/user.types';
+import UserService from 'app/data/services/User/User.service';
+import { message } from 'antd';
 
 export function UserApi({ token }: IUserProps): IUserApi {
   const [isLogged, setIsLogged] = useState(false);
@@ -20,7 +21,7 @@ export function UserApi({ token }: IUserProps): IUserApi {
             setIsLogged(true);
           }
         } catch (error) {
-          alert(error);
+          message.error('Algum erro ocorreu ao tentar obter usuário!');
         }
       }
       getUser();

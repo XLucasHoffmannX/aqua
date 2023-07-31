@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Layout } from "antd";
+import { Layout } from 'antd';
+import styled from 'styled-components';
 
 const { Content, Footer } = Layout;
 
@@ -12,7 +12,6 @@ export const Container = styled(Layout)`
 export const WrapperContainer = styled(Content)`
   width: 100%;
   overflow-y: auto;
-  animation: animate-div 0.5s;
   display: flex;
 `;
 
@@ -24,6 +23,7 @@ export const WrapperContent = styled.div`
 
 export const WrapperMain = styled.div`
   height: 100%;
+  animation: up 0.5s;
 `;
 
 export const WrapperFooter = styled(Footer)`

@@ -1,20 +1,41 @@
-import { ChangeEvent, useContext, useState } from 'react';
-import { ContextState } from '../../../app/context/DataProvider';
-import { useChangeInputRecursive } from 'app/shared/hooks/useChangeInputRecursive/useChangeInputRecursive';
+import { message } from 'antd';
+import { Http } from 'app/data/api/config/Http';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
+
+import { useChangeInputRecursive } from 'shared/hooks';
 
 export function useRegister() {
-  const state: any = useContext(ContextState);
-
-  const [status, setStatus] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [registerForm, setRegisterForm] = useState<Record<string, string>>({
-    nome: '',
+  const [registerForm, setRegisterForm] = useState({
+    name: '',
     email: '',
-    password: ''
+    password: '',
+    passwordConfirm: ''
   });
 
-  const changeInput = (e: ChangeEvent<HTMLInputElement>) =>
+  const useChangeInput = (e: ChangeEvent<HTMLInputElement>) =>
     useChangeInputRecursive(e, registerForm, setRegisterForm);
 
-  return;
+  async function handleRegister(e: SyntheticEvent) {
+    e.preventDefault();
+    await Http.post('/user/register', { ...registerForm })
+      .then(res => {
+        if (res.data) {
+          setSuccess(true);
+          return message.success(`Bem vindo ${registerForm.name}`);
+        }
+      })
+      .catch(error => {
+        if (error.response) {
+          return message.warning(error.response.data.message);
+        }
+      });
+  }
+
+  return {
+    registerForm,
+    success,
+    useChangeInput,
+    handleRegister
+  };
 }

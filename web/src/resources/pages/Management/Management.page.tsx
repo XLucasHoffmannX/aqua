@@ -1,6 +1,9 @@
+import { LatLngExpression } from 'leaflet';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
-import Wrapper from '../components/wrapper/Wrapper';
 import { Link } from 'react-router-dom';
+
+import { Wrapper } from '../../components';
+
 import {
   Container,
   InteractiveBox,
@@ -8,14 +11,11 @@ import {
   InteractiveSearch,
   PopMarker
 } from './Mangement.styles';
-import { LatLngExpression } from 'leaflet';
-import { useLang } from '../../../app/shared/hooks/useLang/useLang';
 
 export function Management(): JSX.Element {
   const pointStart: LatLngExpression = [-23.5387064, -51.4294313];
   return (
     <Wrapper>
-
       <Container>
         <MapContainer
           center={{

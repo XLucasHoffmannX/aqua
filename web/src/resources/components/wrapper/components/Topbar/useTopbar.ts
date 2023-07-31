@@ -1,6 +1,7 @@
-import { HttpAuth } from "../../../../../../app/data/api/config/Http";
+
 import Cookies from "js-cookie";
 import { IUseTopbar } from "./Topabar.types";
+import { HttpAuth } from "../../../../../app/data/api/config/Http";
 
 export function useTopbar(): IUseTopbar {
   async function handleLogout() : Promise<void> {

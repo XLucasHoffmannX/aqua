@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Button, Input, Layout } from "antd";
+import { Button, Input, Layout } from 'antd';
+import styled from 'styled-components';
 
 const { Content, Footer } = Layout;
 

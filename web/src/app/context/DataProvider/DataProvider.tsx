@@ -1,9 +1,11 @@
-import { ReactNode, createContext, useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import { UserApi } from '../data/api/user/User.api';
-import { IDataProviderProps, IStateDataProvider } from './Data.provider.types';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
-export const ContextState = createContext<IStateDataProvider | {}>({});
+import Cookies from 'js-cookie';
+
+import { IDataProviderProps, IStateDataProvider } from './Data.provider.types';
+import { UserApi } from 'app/data/api/user/User.api';
+
+export const ContextState = createContext<IStateDataProvider | null>(null);
 
 export default function DataProvider({
   children

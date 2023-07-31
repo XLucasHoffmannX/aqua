@@ -3,5 +3,10 @@
     "pt": "Próximo",
     "en": "Next",
     "es": "Próximo"
+  },
+  "access" : {
+    "pt": "Acessar",
+    "en": "Access",
+    "es": "Acceder"
   }
 }

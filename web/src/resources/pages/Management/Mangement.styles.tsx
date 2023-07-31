@@ -1,6 +1,6 @@
-import { Input } from "antd";
-import { Popup } from "react-leaflet";
-import styled from "styled-components";
+import { Input } from 'antd';
+import { Popup } from 'react-leaflet';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
@@ -40,6 +40,4 @@ export const InteractiveBoxSearch = styled.div`
   align-items: center;
 `;
 
-export const InteractiveSearch = styled(Input.Search)`
-    
-`;
+export const InteractiveSearch = styled(Input.Search)``;

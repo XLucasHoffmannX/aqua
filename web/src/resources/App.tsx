@@ -1,9 +1,9 @@
-import DataProvider from '../app/context/DataProvider';
 import { RouterBrowser } from '../app/routes/RouterBrowser';
 import 'leaflet/dist/leaflet.css';
-import '../app/shared/styles/index.css';
+import '../shared/styles/index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import DataProvider from 'app/context/DataProvider/DataProvider';
 
 export function App() {
   const queryClient = new QueryClient({

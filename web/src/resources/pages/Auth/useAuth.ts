@@ -1,18 +1,17 @@
 import { ChangeEvent, SyntheticEvent, useContext, useState } from 'react';
 import Cookies from 'js-cookie';
-import { ContextState } from '../../../app/context/DataProvider';
 import { Http } from '../../../app/data/api/config/Http';
 import { message } from 'antd';
-import { IStateDataProvider } from 'app/context/Data.provider.types';
-import { useChangeInputRecursive } from '../../../app/shared/hooks';
-
+import { useChangeInputRecursive } from 'shared/hooks';
+import { ContextState, IStateDataProvider } from 'app/context';
+import { User } from 'shared/types/user.types';
 
 export function useAuth() {
   const { onChangeToken } = useContext(ContextState) as IStateDataProvider;
 
   const [status, setStatus] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [authForm, setAuthForm] = useState<Record<string, string>>({
+  const [authForm, setAuthForm] = useState({
     email: '',
     password: ''
   });

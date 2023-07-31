@@ -19,8 +19,8 @@ import Logo from '../../assets/images/AquaTrack.svg';
 import { Tooltip } from 'antd';
 import { useAuth } from './useAuth';
 import { Link, Redirect } from 'react-router-dom';
-import { useLang } from '../../../app/shared/hooks/useLang/useLang';
-import { LanguageKeyType } from '../../../app/shared/hooks/useLang/useLang.types';
+import { LanguageKeyType } from 'shared/hooks/useLang/useLang.types';
+import { useLang } from 'shared/hooks/useLang/useLang';
 
 export function Auth(): JSX.Element {
   const { lang, currentLang, onChangeLanguage } = useLang();
@@ -75,6 +75,7 @@ export function Auth(): JSX.Element {
               onChange={changeInput}
               onFocus={() => onChangeStatus(false)}
             />
+            
             <AuthInputPassword
               placeholder='Senha de usuário'
               prefix={<AiOutlineLock className='input_user_ico' />}
@@ -84,6 +85,7 @@ export function Auth(): JSX.Element {
               onChange={changeInput}
               onFocus={() => onChangeStatus(false)}
             />
+            
             <AuthSubmit>
               <ButtonSubmit
                 htmlType='submit'
@@ -91,7 +93,7 @@ export function Auth(): JSX.Element {
                 form='form_auth'
                 onClick={e => handleSubmit(e)}
               >
-                Acessar
+                {lang.global.access[currentLang]}
               </ButtonSubmit>
             </AuthSubmit>
             <RegisterNow>
