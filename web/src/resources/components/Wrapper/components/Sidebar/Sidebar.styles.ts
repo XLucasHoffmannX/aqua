@@ -60,7 +60,7 @@ export const SidebarLogo = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   > img {
     width: 70%;
@@ -68,7 +68,7 @@ export const SidebarLogo = styled.a`
 `;
 
 export const SidebarLink = styled(Link)`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background-color: #1980dc;
   height: 55px;
   border-radius: 6px;
@@ -97,10 +97,10 @@ export const SidebarTitle = styled.p`
 
 export const SidebarContent = styled.div`
   padding: 0.7rem;
+  margin-top: .6rem;
 `;
 
 export const SidebarItem = styled(NavLink)`
-  margin-top: 1rem;
   height: 55px;
   border-radius: 6px;
   padding: 1rem;

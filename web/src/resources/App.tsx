@@ -4,6 +4,8 @@ import '../shared/styles/index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import DataProvider from 'app/context/DataProvider/DataProvider';
+import { ConfigProvider } from 'antd';
+import pt from 'antd/locale/pt_BR';
 
 export function App() {
   const queryClient = new QueryClient({
@@ -16,16 +18,18 @@ export function App() {
   });
 
   return (
-    <div className='App'>
-      <QueryClientProvider client={queryClient}>
-        <DataProvider>
-          <ReactQueryDevtools
-            initialIsOpen={false}
-            position='bottom-right'
-          />
-          <RouterBrowser />
-        </DataProvider>
-      </QueryClientProvider>
-    </div>
+    <ConfigProvider locale={pt}>
+      <div className='App'>
+        <QueryClientProvider client={queryClient}>
+          <DataProvider>
+            <ReactQueryDevtools
+              initialIsOpen={false}
+              position='bottom-right'
+            />
+            <RouterBrowser />
+          </DataProvider>
+        </QueryClientProvider>
+      </div>
+    </ConfigProvider>
   );
 }

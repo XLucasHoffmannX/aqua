@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Button, Input, Layout } from "antd";
+import styled from 'styled-components';
+import { Button, Input, Layout } from 'antd';
+import backgroundImage from '../../assets/images/back.png';
 
 const { Content, Footer } = Layout;
 
@@ -11,6 +12,29 @@ export const Container = styled(Layout)`
 
   height: 100%;
   width: 100%;
+
+  background-image: url(${backgroundImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+export const LanguageOptions = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    > p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
 `;
 
 export const AuthContainer = styled(Content)`
@@ -21,13 +45,7 @@ export const AuthContainer = styled(Content)`
 
   height: 100%;
   width: 100%;
-`;
-
-export const AuthFooter = styled(Footer)`
-  text-align: center;
-  font-weight: 600;
-  color: var(--font-2);
-  background: var(--white-1);
+  z-index: 1;
 `;
 
 export const LogoArea = styled.div`
@@ -49,6 +67,7 @@ export const AuthForm = styled.form`
   padding: 1.5rem;
   border-radius: 6px;
   margin-top: 1rem;
+  z-index: 0;
 
   animation: left 0.5s;
 
@@ -74,12 +93,11 @@ export const AuthSubmit = styled.div`
 
 export const ButtonSubmit = styled(Button)`
   width: 100%;
-	height: 50px;
-	font-size: 18px;
+  height: 50px;
+  font-size: 18px;
 `;
-
 
 export const RegisterNow = styled.div`
   text-align: center;
   margin-top: 1rem;
-`
+`;

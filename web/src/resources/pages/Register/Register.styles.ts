@@ -1,5 +1,6 @@
 import { Button, Input, Layout } from 'antd';
 import styled from 'styled-components';
+import backgroundImage from "../../assets/images/back.png";
 
 const { Content, Footer } = Layout;
 
@@ -11,6 +12,7 @@ export const Container = styled(Layout)`
 
   height: 100%;
   width: 100%;
+  background-image: url(${backgroundImage});
 `;
 
 export const RegisterContainer = styled(Content)`
@@ -21,6 +23,7 @@ export const RegisterContainer = styled(Content)`
 
   height: 100%;
   width: 100%;
+  z-index: 2;
 `;
 
 export const LogoArea = styled.div`
@@ -77,9 +80,3 @@ export const AuthrNow = styled.div`
   margin-top: 1rem;
 `;
 
-export const RegisterFooter = styled(Footer)`
-  text-align: center;
-  font-weight: 600;
-  color: var(--font-2);
-  background: var(--white-1);
-`;

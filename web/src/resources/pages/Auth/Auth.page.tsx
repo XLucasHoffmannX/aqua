@@ -1,12 +1,12 @@
 import {
   AuthContainer,
-  AuthFooter,
   AuthForm,
   AuthInputEmail,
   AuthInputPassword,
   AuthSubmit,
   ButtonSubmit,
   Container,
+  LanguageOptions,
   LogoArea,
   RegisterNow
 } from './Auth.styles';
@@ -16,7 +16,7 @@ import {
   AiOutlineInfoCircle
 } from 'react-icons/ai';
 import Logo from '../../assets/images/AquaTrack.svg';
-import { Tooltip } from 'antd';
+import { Select, Tooltip } from 'antd';
 import { useAuth } from './useAuth';
 import { Link, Redirect } from 'react-router-dom';
 import { LanguageKeyType } from 'shared/hooks/useLang/useLang.types';
@@ -34,17 +34,26 @@ export function Auth(): JSX.Element {
     onChangeStatus
   } = useAuth();
 
-  function teste(language: LanguageKeyType) {
-    onChangeLanguage(language);
-  }
-
   return (
     <>
       <Container>
-        <button onClick={() => teste('en')}>en</button>
-        <button onClick={() => teste('pt')}>pt</button>
-        <button onClick={() => teste('es')}>es</button>
-
+        <LanguageOptions>
+          <div>
+            <p>Idioma:</p>
+            <Select
+              defaultValue='pt'
+              style={{ width: 120 }}
+              options={[
+                { value: 'pt', label: 'Português' },
+                { value: 'en', label: 'English' },
+                { value: 'es', label: 'Espanhol' }
+              ]}
+              onChange={e => {
+                onChangeLanguage(e as LanguageKeyType);
+              }}
+            />
+          </div>
+        </LanguageOptions>
         <AuthContainer>
           <LogoArea>
             <img
@@ -75,7 +84,7 @@ export function Auth(): JSX.Element {
               onChange={changeInput}
               onFocus={() => onChangeStatus(false)}
             />
-            
+
             <AuthInputPassword
               placeholder='Senha de usuário'
               prefix={<AiOutlineLock className='input_user_ico' />}
@@ -85,7 +94,7 @@ export function Auth(): JSX.Element {
               onChange={changeInput}
               onFocus={() => onChangeStatus(false)}
             />
-            
+
             <AuthSubmit>
               <ButtonSubmit
                 htmlType='submit'
@@ -103,7 +112,6 @@ export function Auth(): JSX.Element {
             </RegisterNow>
           </AuthForm>
         </AuthContainer>
-        <AuthFooter>Hoffmann | ©2023</AuthFooter>
       </Container>
       {success && <Redirect to='/home' />}
     </>

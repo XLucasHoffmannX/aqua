@@ -1,4 +1,4 @@
-import { Tooltip } from 'antd';
+import { Select, Tooltip } from 'antd';
 import {
   AiOutlineInfoCircle,
   AiOutlineLock,
@@ -15,7 +15,6 @@ import {
   Container,
   LogoArea,
   RegisterContainer,
-  RegisterFooter,
   RegisterForm,
   RegisterInput,
   RegisterInputPassword,
@@ -23,15 +22,34 @@ import {
 } from './Register.styles';
 import { useLang } from 'shared/hooks/useLang/useLang';
 import { useRegister } from './useRegister';
+import { LanguageOptions } from '../Auth/Auth.styles';
+import { LanguageKeyType } from 'shared/hooks/useLang/useLang.types';
 
 export function Register(): JSX.Element {
-  const { lang, currentLang } = useLang();
+  const { lang, currentLang, onChangeLanguage } = useLang();
   const { registerForm, success, useChangeInput, handleRegister } =
     useRegister();
 
   return (
     <>
       <Container>
+        <LanguageOptions>
+          <div>
+            <p>Idioma:</p>
+            <Select
+              defaultValue='pt'
+              style={{ width: 120 }}
+              options={[
+                { value: 'pt', label: 'Português' },
+                { value: 'en', label: 'English' },
+                { value: 'es', label: 'Espanhol' }
+              ]}
+              onChange={e => {
+                onChangeLanguage(e as LanguageKeyType);
+              }}
+            />
+          </div>
+        </LanguageOptions>
         <RegisterContainer>
           <LogoArea>
             <img
@@ -107,7 +125,6 @@ export function Register(): JSX.Element {
             </AuthrNow>
           </RegisterForm>
         </RegisterContainer>
-        <RegisterFooter>Hoffmann | ©2023</RegisterFooter>
       </Container>
       {success && <Redirect to='/' />}
     </>
