@@ -13,6 +13,9 @@ export const Container = styled(Layout)`
   height: 100%;
   width: 100%;
   background-image: url(${backgroundImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const RegisterContainer = styled(Content)`
