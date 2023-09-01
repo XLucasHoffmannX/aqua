@@ -11,6 +11,8 @@ import {
 import { CgUserlane } from 'react-icons/cg';
 import { LiaMapMarkedAltSolid } from 'react-icons/lia';
 import { IoIosNotificationsOutline, IoMdClose } from 'react-icons/io';
+import { TbHeartRateMonitor } from 'react-icons/tb';
+import { FiUser } from 'react-icons/fi';
 import LogoWhite from '../../../../assets/images/AquaTrackWhite.svg';
 import { ISidebarProps } from './Sidebar.types';
 import { ContextState, IStateDataProvider } from 'app/context';
@@ -45,9 +47,13 @@ export function Sidebar({
           <LiaMapMarkedAltSolid />
           <SidebarTitle>Inicio</SidebarTitle>
         </SidebarItem>
+        <SidebarItem to='/monitor-resource'>
+          <TbHeartRateMonitor />
+          <SidebarTitle>Monitor de recursos</SidebarTitle>
+        </SidebarItem>
         <SidebarItem to='/user'>
-          <IoIosNotificationsOutline />
-          <SidebarTitle>Teste</SidebarTitle>
+          <FiUser />
+          <SidebarTitle>Usuário</SidebarTitle>
         </SidebarItem>
       </SidebarContent>
     </Container>

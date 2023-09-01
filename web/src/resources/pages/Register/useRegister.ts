@@ -18,6 +18,8 @@ export function useRegister() {
 
   async function handleRegister(e: SyntheticEvent) {
     e.preventDefault();
+    if(registerForm.password !== registerForm.passwordConfirm) return message.warning('As senhas não conferem');
+
     await Http.post('/user/register', { ...registerForm })
       .then(res => {
         if (res.data) {

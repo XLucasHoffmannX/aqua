@@ -3,7 +3,7 @@ import PrivateRoute from './PrivateRoute';
 import { Register } from '../../resources/pages/Register/Register.page';
 import { useContext, useEffect } from 'react';
 import { IStateDataProvider } from '../context/DataProvider/Data.provider.types';
-import { Auth, Management, User } from '../../resources/pages/';
+import { Auth, Management, Monitor, User } from '../../resources/pages/';
 import { ContextState } from 'app/context';
 
 export function RouterBrowser() {
@@ -32,6 +32,9 @@ export function RouterBrowser() {
           </PrivateRoute>
           <PrivateRoute path='/user'>
             <User />
+          </PrivateRoute>
+          <PrivateRoute path='/monitor-resource'>
+            <Monitor />
           </PrivateRoute>
         </Switch>
       </RouterApp>

@@ -15,7 +15,7 @@ import {
 export function Management(): JSX.Element {
   const pointStart: LatLngExpression = [-23.5387064, -51.4294313];
   return (
-    <Wrapper>
+    <Wrapper title='Gerenciar mapa'>
       <Container>
         <MapContainer
           center={{

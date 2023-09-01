@@ -10,8 +10,9 @@ import {
   WrapperFooter,
   WrapperMain
 } from './Wrapper.styles';
+import { IWrapperProps } from './Wrapper.types';
 
-export function Wrapper({ children }: { children: ReactNode }): JSX.Element {
+export function Wrapper({ children, title }: IWrapperProps): JSX.Element {
   const { openSidebar, handleOpenSidbar } = useWrapper();
 
   return (
@@ -22,7 +23,7 @@ export function Wrapper({ children }: { children: ReactNode }): JSX.Element {
           onChangeOpenSidebar={handleOpenSidbar}
         />
         <WrapperContent>
-          <Topbar onChangeOpenSidebar={handleOpenSidbar} />
+          <Topbar onChangeOpenSidebar={handleOpenSidbar} title={title} />
           <WrapperMain>{children}</WrapperMain>
           <WrapperFooter>Hoffmann | ©2023</WrapperFooter>
         </WrapperContent>

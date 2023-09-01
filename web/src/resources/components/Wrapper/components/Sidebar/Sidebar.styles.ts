@@ -97,7 +97,6 @@ export const SidebarTitle = styled.p`
 
 export const SidebarContent = styled.div`
   padding: 0.7rem;
-  margin-top: .6rem;
 `;
 
 export const SidebarItem = styled(NavLink)`
@@ -108,6 +107,8 @@ export const SidebarItem = styled(NavLink)`
   display: flex;
   align-items: center;
   color: var(--white);
+
+  margin: .5rem 0;
 
   > svg {
     font-size: 28px;

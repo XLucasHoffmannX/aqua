@@ -2,7 +2,7 @@ import { Wrapper } from "../../components/";
 
 export function User(): JSX.Element {
     return(
-        <Wrapper>
+        <Wrapper title="Usuário">
             teste
         </Wrapper>
     )
