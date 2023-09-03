@@ -4,8 +4,12 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from 'src/resources/user/user.module';
-import { AuthMiddleware } from './middleware/auth.middleware';
-import { ParametersModule } from './resources/parameters/parameters.module';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ParametersModule } from '../parameters/parameters.module';
+import { WebSocketModule } from '../websocket/websocket.module';
+import { WebSocketClient } from '../websocket/websocket.service';
+import { AuthMiddleware } from 'src/middleware/auth.middleware';
+import { SocketGateway } from 'src/gateways/socket.gateway';
 
 @Module({
   imports: [
@@ -20,11 +24,22 @@ import { ParametersModule } from './resources/parameters/parameters.module';
       synchronize: true,
       entities: [__dirname + '/**/*.entity{.js, .ts}'],
     }),
+    ClientsModule.register([
+      {
+        name: 'TESTE_CLIENT',
+        transport: Transport.MQTT,
+        options: {
+          subscribeOptions: { qos: 2 },
+          url: 'mqtt://localhost:1883',
+        },
+      },
+    ]),
     UserModule,
     ParametersModule,
+    WebSocketModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SocketGateway, WebSocketClient],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
