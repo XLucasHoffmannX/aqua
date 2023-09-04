@@ -30,7 +30,7 @@ export const Container = styled.div<ContainerStyleType>`
             height: 100%;
             background-color: var(--blue-1);
             overflow-x: none;
-            z-index: 9999;
+            z-index: 2;
           `}
   }
 `;

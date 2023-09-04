@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import DataProvider from 'app/context/DataProvider/DataProvider';
 import { ConfigProvider } from 'antd';
 import pt from 'antd/locale/pt_BR';
+import WebSocketProvider from 'app/context/WebsocketContext/WebsocketContext';
 
 export function App() {
   const queryClient = new QueryClient({
@@ -21,13 +22,15 @@ export function App() {
     <ConfigProvider locale={pt}>
       <div className='App'>
         <QueryClientProvider client={queryClient}>
-          <DataProvider>
-            <ReactQueryDevtools
-              initialIsOpen={false}
-              position='bottom-right'
-            />
-            <RouterBrowser />
-          </DataProvider>
+          <WebSocketProvider>
+            <DataProvider>
+              <ReactQueryDevtools
+                initialIsOpen={false}
+                position='bottom-right'
+              />
+              <RouterBrowser />
+            </DataProvider>
+          </WebSocketProvider>
         </QueryClientProvider>
       </div>
     </ConfigProvider>

@@ -22,7 +22,7 @@ import { SocketGateway } from 'src/gateways/socket.gateway';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       synchronize: true,
-      entities: [__dirname + '/**/*.entity{.js, .ts}'],
+      entities: [__dirname + '/../**/*.entity{.js, .ts}'],
     }),
     ClientsModule.register([
       {

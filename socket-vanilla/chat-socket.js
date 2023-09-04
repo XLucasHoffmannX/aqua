@@ -11,6 +11,10 @@ socket.on('message', ({ data }) => {
     handleNewMessage(data);
 })
 
+socket.on('connect', () => {
+    console.log('connected to Gateway');
+})
+
 const handleNewMessage = (message) => {
     messages.appendChild(buildNewMessage(message));
 }

@@ -1,12 +1,17 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { Socket, io } from 'socket.io-client';
+
+ConfigModule.forRoot();
+
+const api_url: string = process.env.API_URL_ROOT;
 
 @Injectable()
 export class WebSocketClient implements OnModuleInit {
   public socketClient: Socket;
 
   constructor() {
-    this.socketClient = io('http://localhost:4040');
+    this.socketClient = io(api_url);
   }
 
   onModuleInit() {

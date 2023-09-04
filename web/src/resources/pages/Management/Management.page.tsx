@@ -23,7 +23,7 @@ export function Management(): JSX.Element {
             lng: pointStart[1]
           }}
           zoom={16}
-          style={{ height: '100%', width: '100%' }}
+          style={{ height: '100%', width: '100%', zIndex: '0' }}
           zoomControl={false}
         >
           <TileLayer

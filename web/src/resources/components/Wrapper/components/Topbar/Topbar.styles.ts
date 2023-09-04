@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 9998;
+  z-index: 1;
 `;
 
 export const Logout = styled.div`

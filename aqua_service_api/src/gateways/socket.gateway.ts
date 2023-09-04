@@ -28,14 +28,4 @@ export class SocketGateway implements OnModuleInit {
   handleMessage(@MessageBody() message: string) {
     this.server.emit('message', message);
   }
-
-  /*  @SubscribeMessage('message')
-  async eventMessage(client: any, payload: { data: string }) {
-    const { data } = payload;
-    console.log('WS => ', data);
-
-    return {
-      payload,
-    };
-  } */
 }

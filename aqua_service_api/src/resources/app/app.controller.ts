@@ -1,11 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import {
-  Ctx,
-  MessagePattern,
-  MqttContext,
-  Payload,
-} from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import { ConfigModule } from '@nestjs/config';
 import { WebSocketClient } from '../websocket/websocket.service';
 ConfigModule.forRoot();
@@ -31,9 +26,8 @@ export class AppController {
   }
 
   @MessagePattern(outputClient)
-  logData(@Payload() payload: string, @Ctx() context: MqttContext): string {
-    /* console.log(`---- NEW INPUT FROM MODULE: ${context.getTopic()} ----`); */
+  logData(@Payload() payload: string): string {
     this.websocket.onMessage(payload);
-    return `[${payload}] => LOG SUCCESSUS FROM TOPIC ${context.getTopic()}`;
+    return payload;
   }
 }

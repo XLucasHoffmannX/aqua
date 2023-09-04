@@ -10,7 +10,7 @@ export function RouterBrowser() {
   const {userApi} = useContext(ContextState) as IStateDataProvider;
 
   useEffect(() => {
-    console.log(userApi.userData);
+    //console.log(userApi.userData);
   }, [userApi]);
 
   return (

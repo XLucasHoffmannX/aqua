@@ -9,13 +9,13 @@ export const Container = styled.div`
 
 export const PopMarker = styled(Popup)`
   border: 1px solid red;
-  z-index: 9998;
+  z-index: 1;
 `;
 
 export const InteractiveBox = styled.div`
   position: absolute;
   width: 100%;
-  z-index: 8888;
+  z-index: 99999;
   position: absolute;
   left: 0;
   right: 0;
