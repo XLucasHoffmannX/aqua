@@ -32,6 +32,7 @@ export function useAuth() {
         .then(res => {
           if (res.data) {
             onChangeToken(res.data.access);
+            localStorage.setItem('primaryLogin', 'true');
             Cookies.set('access-token', res.data.access);
           }
           if (res.status === 201 || res.status === 200) {
