@@ -33,7 +33,6 @@ export function useAuth() {
           if (res.data) {
             onChangeToken(res.data.access);
             Cookies.set('access-token', res.data.access);
-            localStorage.setItem('primaryLogin', 'true');
           }
           if (res.status === 201 || res.status === 200) {
             setSuccess(true);
