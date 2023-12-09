@@ -11,9 +11,14 @@ import {
   InteractiveSearch,
   PopMarker
 } from './Mangement.styles';
+import { MonitorModalTracker } from './components';
+import { useManagment } from './useManagment';
 
 export function Management(): JSX.Element {
   const pointStart: LatLngExpression = [-23.5387064, -51.4294313];
+
+  const { handleOpenModalMonitor, openModalMonitor } = useManagment();
+
   return (
     <Wrapper title='Gerenciar mapa'>
       <Container>
@@ -40,13 +45,23 @@ export function Management(): JSX.Element {
           </InteractiveBox>
           <Marker position={pointStart}>
             <PopMarker>
-              Modulo 1
-              <br />
-              <Link to='#'>Acessar</Link>
+              <Link
+                to='#'
+                onClick={() => {
+                  handleOpenModalMonitor(true);
+                }}
+              >
+                Acessar tracker
+              </Link>
             </PopMarker>
           </Marker>
         </MapContainer>
       </Container>
+
+      <MonitorModalTracker
+        open={openModalMonitor}
+        handleCloseModal={handleOpenModalMonitor}
+      />
     </Wrapper>
   );
 }

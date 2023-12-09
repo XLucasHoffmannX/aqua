@@ -8,8 +8,10 @@ export const Container = styled.div`
 `;
 
 export const PopMarker = styled(Popup)`
-  border: 1px solid red;
   z-index: 1;
+
+  > a {
+  }
 `;
 
 export const InteractiveBox = styled.div`

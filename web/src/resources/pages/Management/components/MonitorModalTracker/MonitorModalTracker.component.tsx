@@ -1,21 +1,24 @@
-import { Wrapper } from 'resources/components';
+import { Modal, message } from 'antd';
 import {
-  Container,
   Content,
   ContentDisplay,
   Display,
   Header,
   StatusConnect,
   TagStatus
-} from './Monitor.styles';
+} from './MonitorModalTracker.styles';
+import { IMonitorModalTrackerProps } from './MonitorModalTracker.types';
+import { Container } from '../../Mangement.styles';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
-import { MessageData } from './components';
 import { WebSocketContext } from 'app/context';
-import { message } from 'antd';
-import { type MessageDataType } from './Monitor.types';
+import { MessageDataType } from 'resources/pages/Monitor/Monitor.types';
+import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
+import { MessageData } from 'resources/pages/Monitor/components';
 
-export function Monitor(): JSX.Element {
+export function MonitorModalTracker({
+  open,
+  handleCloseModal
+}: IMonitorModalTrackerProps): JSX.Element {
   const socket = useContext(WebSocketContext);
   const [messages, setMessages] = useState<MessageDataType[]>([]);
   const [connectedModule, setConnectedModule] = useState(false);
@@ -52,14 +55,23 @@ export function Monitor(): JSX.Element {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
   return (
-    <Wrapper title='Monitor de recursos'>
+    <Modal
+      title={'Monitor de recursos do Tracker'}
+      width={550}
+      maskClosable={false}
+      open={open}
+      onCancel={() => {
+        handleCloseModal(false);
+      }}
+      footer={null}
+      closeIcon={false}
+    >
       <Container>
         <Content>
           <Display>
             <Header>
-              <h1>Dados de saída do tracker</h1>
+              Status:
               <StatusConnect>
                 <TagStatus
                   icon={
@@ -87,6 +99,6 @@ export function Monitor(): JSX.Element {
           </Display>
         </Content>
       </Container>
-    </Wrapper>
+    </Modal>
   );
 }
