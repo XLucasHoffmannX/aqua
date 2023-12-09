@@ -10,6 +10,7 @@ import { WebSocketModule } from '../websocket/websocket.module';
 import { WebSocketClient } from '../websocket/websocket.service';
 import { AuthMiddleware } from 'src/middleware/auth.middleware';
 import { SocketGateway } from 'src/gateways/socket.gateway';
+import { TrackerModule } from '../tracker/tracker.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { SocketGateway } from 'src/gateways/socket.gateway';
     UserModule,
     ParametersModule,
     WebSocketModule,
+    TrackerModule,
   ],
   controllers: [AppController],
   providers: [AppService, SocketGateway, WebSocketClient],
